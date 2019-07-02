@@ -61,8 +61,7 @@ namespace EmployeeWebApi.Controllers
                 var result = _employeeManager.AddEmployee(emp);
                 if (result > 0)
                 {
-                    var response = Request.CreateResponse<string>(HttpStatusCode.Created, "Employee created successfully with ID " + emp + "");
-                    return ResponseMessage(response);
+                    return Content(HttpStatusCode.Created, "Employee created successfully with ID " + result + "");
                 }
                 return InternalServerError();
             }
@@ -88,5 +87,7 @@ namespace EmployeeWebApi.Controllers
                 return InternalServerError(ex);
             }
         }
+
+
     }
 }

@@ -46,6 +46,7 @@
       <HintPath>..\packages\MSTest.TestFramework.1.1.11\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -60,9 +61,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EmployeeEntities\EmployeeEntities.csproj">
+      <Project>{631DB6FA-BB2A-44B3-963E-06E2A64E96BA}</Project>
+      <Name>EmployeeEntities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EmployeeWebApi\EmployeeWebApi.csproj">
       <Project>{4386422A-E194-4969-B28A-FF7A292F906E}</Project>
       <Name>EmployeeWebApi</Name>
