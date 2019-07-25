@@ -15,6 +15,8 @@ namespace EmployeeEntities
 
         public const string GetEmployeesByIdCommand = "SELECT * from Employee where Id=@Id";
 
+        public const string GetEmployeesByUnameCommand = "SELECT * from Employee where Username=@Username";
+
         public const string GetEmployeesCommand = "SELECT * from Employee";
 
         public const string ConnectionName = "EmployeeData";

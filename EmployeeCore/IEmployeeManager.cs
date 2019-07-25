@@ -17,5 +17,6 @@ namespace EmployeeCore
 
         bool DeleteEmployee(int id);
 
+        bool CheckLogin(string userName, string key);
     }
 }

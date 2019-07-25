@@ -13,11 +13,11 @@ namespace EmployeeWebApi.Controllers.Tests
     [TestClass()]
     public class EmployeesControllerTests
     {
-        int employeeId = 15;
+        int employeeId = 17;
         [TestMethod()]
         public void AddEmployeeTest()
         {
-            var controller = new EmployeesController();
+            var controller = new EmployeesController(IEmployeeManger employeemanager);
             var employee = new EmployeeEntities.Employee
             {
                 DateOfBirth = "27-04-1995",

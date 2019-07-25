@@ -65,6 +65,8 @@ namespace EmployeeData
             }
         }
 
+
+
         public Employee GetEmployee(int id)
         {
             try
@@ -76,6 +78,47 @@ namespace EmployeeData
                     {
                         conn.Open();
                         cmd.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+
+                        var reader = cmd.ExecuteReader();
+                        if (reader != null && reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                var employee = new Employee()
+                                {
+                                    DateOfBirth = (string)reader["DateOfBirth"],
+                                    Email = (string)reader["Email"],
+                                    FullName = (string)reader["FullName"],
+                                    Gender = (string)reader["Gender"],
+                                    Id = (int)reader["Id"],
+                                    Password = (string)reader["Password"],
+                                    Username = (string)reader["Username"]
+                                };
+                                return employee;
+                            }
+                        }
+
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public Employee GetEmployee(string userName)
+        {
+            try
+            {
+                var commandText = Constants.GetEmployeesByUnameCommand;
+                using (SqlConnection conn = GetConnectionString())
+                {
+                    using (var cmd = new SqlCommand(commandText, conn))
+                    {
+                        conn.Open();
+                        cmd.Parameters.Add("@Username", SqlDbType.VarChar).Value = userName;
 
                         var reader = cmd.ExecuteReader();
                         if (reader != null && reader.HasRows)

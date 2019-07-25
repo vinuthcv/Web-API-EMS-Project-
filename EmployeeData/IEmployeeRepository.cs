@@ -17,5 +17,7 @@ namespace EmployeeData
 
         bool DeleteEmployee(int id);
 
+        Employee GetEmployee(string userName);
+
     }
 }

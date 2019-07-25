@@ -72,5 +72,23 @@ namespace EmployeeCore
                 throw ex;
             }
         }
+
+        public bool CheckLogin(string userName, string key)
+        {
+            try
+            {
+                var employee = _employeeRepository.GetEmployee(userName);
+                if(employee !=null && employee.Username == userName && employee.Password == key)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

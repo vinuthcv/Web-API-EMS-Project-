@@ -1,5 +1,6 @@
 ﻿using EmployeeCore;
 using EmployeeEntities;
+using EmployeeWebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,9 @@ namespace EmployeeWebApi.Controllers
     public class EmployeesController : ApiController
     {
         private IEmployeeManager _employeeManager;
-        public EmployeesController()
+        public EmployeesController(IEmployeeManager employeeManager)
         {
-            _employeeManager = new EmployeeManager();
+            _employeeManager = employeeManager;
         }
 
         // GET api/values
@@ -85,6 +86,25 @@ namespace EmployeeWebApi.Controllers
             catch (Exception ex)
             {
                 return InternalServerError(ex);
+            }
+        }
+
+        [HttpPost]
+        public IHttpActionResult CheckLogin([FromBody]Login login)
+        {
+            try
+            {
+                var result = _employeeManager.CheckLogin(login.UserName, login.Password);
+                if(result)
+                {
+                    return Content(HttpStatusCode.OK, "Employee has authenticated successfully");
+                }
+
+                return Content(HttpStatusCode.Forbidden, "Invalid Username and Password");
+            }
+            catch (Exception ex)
+            {
+               return InternalServerError(ex);
             }
         }
 
