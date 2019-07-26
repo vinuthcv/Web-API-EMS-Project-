@@ -11,9 +11,9 @@ namespace EmployeeCore
     public class EmployeeManager : IEmployeeManager
     {
         private readonly IEmployeeRepository _employeeRepository;
-        public EmployeeManager()
+        public EmployeeManager(IEmployeeRepository employeeRepository)
         {
-            _employeeRepository = new EmployeeRepository();
+            _employeeRepository = employeeRepository;
         }
 
         public int AddEmployee(Employee emp)

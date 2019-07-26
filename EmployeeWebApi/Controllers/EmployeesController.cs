@@ -90,6 +90,7 @@ namespace EmployeeWebApi.Controllers
         }
 
         [HttpPost]
+        [Route("api/Employees/CheckLogin")]
         public IHttpActionResult CheckLogin([FromBody]Login login)
         {
             try
