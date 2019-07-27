@@ -71,6 +71,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Controllers\EmployeesControllerTests.cs" />
+    <Compile Include="EmployeeManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +84,10 @@
     <ProjectReference Include="..\EmployeeCore\EmployeeCore.csproj">
       <Project>{4FE00D44-58FC-4D8D-8111-CBDA8BCE40B9}</Project>
       <Name>EmployeeCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EmployeeData\EmployeeData.csproj">
+      <Project>{0F33DA2D-00AE-4CAF-A3F2-67FCAD36479E}</Project>
+      <Name>EmployeeData</Name>
     </ProjectReference>
     <ProjectReference Include="..\EmployeeEntities\EmployeeEntities.csproj">
       <Project>{631DB6FA-BB2A-44B3-963E-06E2A64E96BA}</Project>
